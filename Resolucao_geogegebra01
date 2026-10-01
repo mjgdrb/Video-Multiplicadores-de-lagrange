@@ -1,0 +1,34 @@
+Como plotar a resolucao no geogebra
+
+
+
+# 1. Defina o controle deslizante para a aresta x da base da caixa
+t = ControleDeslizante(11.4, 21.94, 0.01)
+
+# 2. Defina as coordenadas dos vértices da caixa com base em t
+A = (0, 0, 0)
+B = (t, 0, 0)
+C = (t, t, 0)
+D = (0, t, 0)
+
+# 3. Defina a altura z baseada na restrição da soma das arestas (z = 50 - 2t)
+h = 50 - 2 * t
+
+# 4. Crie os pontos do topo da caixa utilizando a altura h
+E = (0, 0, h)
+F = (t, 0, h)
+G = (t, t, h)
+H = (0, t, h)
+
+# 5. Crie o prisma (caixa retangular) passando a base inferior e a altura
+caixa = Prisma(Polígono(A, B, C, D), h)
+
+
+# 1. Superfície da restrição das arestas (Plano)
+eq1: x + y + z = 50
+
+# 2. Superfície da restrição da área (Hiperbolóide)
+eq2: x*y + y*z + x*z = 750
+
+# 3. Curva de interseção onde a caixa existe no espaço
+Interseção(eq1, eq2)
